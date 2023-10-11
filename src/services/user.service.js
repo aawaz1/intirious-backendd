@@ -15,7 +15,7 @@
 //         return user
 
 //     } catch (error) {
-//         throw new Error("error.message")
+//         throw new Error(error.message)
         
 //     }
 // }
@@ -34,18 +34,35 @@
 //     }
 // }
  
-// const getUserbyEmail = async (email) => {
+// const getUserByEmail = async (email) => {
 //     try {
 //         const user = await User.findOne({email});
 //         if(!user){
 //             throw new Error("user not found with id : " , email)
 //         }
-//         return email ;
+//         return user ;
 //        } catch (error) {
 //         throw new Error(error.message)
         
 //     }
 // }
+
+// // const getUserByEmail=async(email)=>{
+// //     try {
+
+// //         const user=await User.findOne({email});
+
+// //         if(!user){
+// //             throw new Error("user found with email : ",email)
+// //         }
+
+// //         return user;
+        
+// //     } catch (error) {
+// //         console.log("error - ",error.message)
+// //         throw new Error(error.message)
+// //     }
+// // }
 
 // const getUserProfileByToken = async(token) => {
 //     try {
@@ -75,7 +92,7 @@
 // module.exports = {
 //     createUser ,
 //      findUserbyId , 
-//      getUserbyEmail , 
+//      getUserByEmail , 
 //      getAllUsers, 
 //      getUserProfileByToken}
 
@@ -88,7 +105,7 @@ const jwtProvider=require("../config/jwtProvider")
 const createUser = async (userData)=>{
     try {
 
-        let {firstName,lastName,email,password,role}=userData;
+        let {firstName,lastName,email,password}=userData;
 
         const isUserExist=await User.findOne({email});
 
@@ -99,7 +116,7 @@ const createUser = async (userData)=>{
 
         password=await bcrypt.hash(password,8);
     
-        const user=await User.create({firstName,lastName,email,password,role})
+        const user=await User.create({firstName,lastName,email,password})
 
         console.log("user ",user)
     

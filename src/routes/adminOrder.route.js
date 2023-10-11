@@ -5,7 +5,7 @@ const orderController = require("../controller/adminOrder.controller.js");
 const  authenticate  = require("../middlewares/authenticate.js");
 
 
-router.get("/",authenticate, orderController.getAllOrders);
+router.get("/",authenticate,orderController.getAllOrders);
 router.put("/:orderId/confirmed", authenticate, orderController.confirmedOrders);
 router.put("/:orderId/ship", authenticate, orderController.shipOrders);
 router.put("/:orderId/deliver", authenticate, orderController.deliverOrders);

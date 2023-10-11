@@ -15,16 +15,17 @@ async function createCart(user){
 }
 
 async function findUserCart(userId){
+    let cart = await Cart.findOne({user:userId})
     try {
-        let cart = await Cart.findOne({user:user})
-        let  cartItems = await CartItem.findOne({cart: cart}).populate('product');
+      
+        let  cartItems = await CartItem.find({cart: cart._id}).populate('product');
         
         cart.cartItems = cartItems;
         let totalPrice = 0;
         let totalDiscountedPrice = 0;
         let totalItem = 0;
 
-        for(let cartItem of cart.cartItems){
+        for(const cartItem of cart.cartItems){
             totalPrice+= cartItem.price;
             totalDiscountedPrice+= cartItem.discountedPrice;
             totalItem+= cartItem.quantity;
@@ -44,6 +45,12 @@ async function findUserCart(userId){
         
     }
 }
+
+
+
+
+
+
 
 async function addCartItem(userId , req) {
     try {
@@ -76,3 +83,8 @@ async function addCartItem(userId , req) {
 
 }
 module.exports = {createCart ,findUserCart, addCartItem,};
+
+
+
+
+

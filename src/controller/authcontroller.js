@@ -13,7 +13,7 @@ const register = async (req,res) => {
             jwt
         })     
     } catch (error) {
-        return res.status(500).send({error : error.message });
+        return res.status(500).json({error : error.message });
         
     }
 
@@ -22,7 +22,7 @@ const register = async (req,res) => {
 
 
 const login = async(req,res) => {
-    const {password,email} = req.body;
+    const {email,password} = req.body;
     try {
         const user = await userService.getUserByEmail(email);
         if(!user){

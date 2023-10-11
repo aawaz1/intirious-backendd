@@ -88,3 +88,4 @@ numRatings : {
 const Product = mongoose.model('products' ,productScehma);
 
 module.exports = Product;
+

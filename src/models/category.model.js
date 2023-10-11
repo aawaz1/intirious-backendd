@@ -6,11 +6,10 @@ const categoryScehma = new mongoose.Schema({
         required : true,
         maxlength : 50,
     },
-    parentCategory : {
+    parentCategory: {
         type: mongoose.Schema.Types.ObjectId,
-        ref : "categories",
-        required : true,
-    },
+        ref: 'categories',
+      },
     level : {
         type: Number,
         required : true,

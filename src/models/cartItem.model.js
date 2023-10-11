@@ -43,3 +43,6 @@ discountedPrice : {
 const CartItem = mongoose.model('cartItems' ,cartItemScehma);
 
 module.exports = CartItem;
+
+
+
